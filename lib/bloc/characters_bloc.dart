@@ -24,6 +24,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
         );
         emit(CharactersSuccess(model: result));
       } catch (e) {
+        print(e.toString());
         if (e is DioException) {
           emit(
             CharactersError(

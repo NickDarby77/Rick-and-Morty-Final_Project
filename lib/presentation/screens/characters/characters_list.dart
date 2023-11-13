@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty_project/bloc/characters_bloc.dart';
 import 'package:rick_and_morty_project/presentation/theme/app_fonts.dart';
-import 'package:rick_and_morty_project/presentation/widgets/bottom_nav_bar.dart';
 import 'package:rick_and_morty_project/presentation/widgets/grid_view_widget.dart';
 import 'package:rick_and_morty_project/presentation/widgets/list_view_widget.dart';
 import 'package:rick_and_morty_project/presentation/widgets/text_field_widget.dart';
@@ -19,12 +18,42 @@ class _CharactersListState extends State<CharactersListPage> {
   bool isList = true;
   TextEditingController controller = TextEditingController();
 
+  final ScrollController _scrollController = ScrollController();
+  int currentPage = 1;
+
   @override
   void initState() {
     BlocProvider.of<CharactersBloc>(context).add(
       GetCharactersDataEvent(),
     );
     super.initState();
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        if (currentPage <= 42) {
+          currentPage++;
+          BlocProvider.of<CharactersBloc>(context).add(
+            GetCharactersDataEvent(page: currentPage.toString()),
+          );
+        }
+       
+      } else if (_scrollController.position.pixels ==
+          _scrollController.position.minScrollExtent) {
+        if (currentPage > 0) {
+          currentPage--;
+          BlocProvider.of<CharactersBloc>(context).add(
+            GetCharactersDataEvent(page: currentPage.toString()),
+          );
+        }
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -36,6 +65,10 @@ class _CharactersListState extends State<CharactersListPage> {
       ),
       body: BlocBuilder<CharactersBloc, CharactersState>(
         builder: (context, state) {
+          print(state);
+          if (state is CharactersLoading) {
+            return const Center(child: CircularProgressIndicator.adaptive(),);
+          }
           if (state is CharactersSuccess) {
             return Column(
               children: [
@@ -51,14 +84,11 @@ class _CharactersListState extends State<CharactersListPage> {
                 isList
                     ? ListViewWidget(
                         dataResults: state.model.results ?? [],
+                        scrollController: _scrollController,
                       )
                     : GridViewWidget(
                         dataResults: state.model.results ?? [],
                       ),
-                const SizedBox(
-                  height: 60,
-                  child: BottomNavBarWidget(),
-                ),
               ],
             );
           } else if (state is CharactersError) {
@@ -66,7 +96,7 @@ class _CharactersListState extends State<CharactersListPage> {
               child: Column(
                 children: [
                   const SizedBox(height: 29),
-                   Text(
+                  Text(
                     'Результаты поиска'.toUpperCase(),
                     style: AppFonts.charactersNumber,
                   ),

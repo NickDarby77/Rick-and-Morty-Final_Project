@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_project/presentation/screens/characters/characters_list.dart';
+import 'package:rick_and_morty_project/presentation/screens/navigation_screen.dart';
 
 class ScreenTwo extends StatefulWidget {
   const ScreenTwo({super.key});
@@ -39,7 +39,7 @@ class _ScreenTwoState extends State<ScreenTwo> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const CharactersListPage(),
+        builder: (context) => const NavigationScreen(),
       ),
     );
   }

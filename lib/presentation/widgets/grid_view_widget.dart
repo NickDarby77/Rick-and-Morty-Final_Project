@@ -33,7 +33,7 @@ class GridViewWidget extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const CharacterDetailsPage(),
+                    builder: (context) =>  CharacterDetailsPage(data:  dataResults[index],),
                   ),
                 );
               },

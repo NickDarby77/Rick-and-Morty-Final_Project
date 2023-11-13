@@ -5,23 +5,24 @@ import 'package:rick_and_morty_project/presentation/theme/app_fonts.dart';
 class BottomNavBarWidget extends StatefulWidget {
   const BottomNavBarWidget({
     super.key,
+    required this.currentInxdex,
+    required this.onTap,
   });
+  final int currentInxdex;
+  final Function(int) onTap;
 
   @override
   State<BottomNavBarWidget> createState() => _BottomNavBarWidgetState();
 }
 
 class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
-  int currentIndex = 0;
+  
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      onTap: (value) {
-        currentIndex = value;
-        setState(() {});
-      },
-      currentIndex: currentIndex,
+      onTap: widget.onTap,
+      currentIndex: widget.currentInxdex,
       type: BottomNavigationBarType.fixed,
       backgroundColor: AppColors.navBarBgColor,
       selectedItemColor: AppColors.selectedItemColor,
@@ -35,7 +36,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
           backgroundColor: AppColors.navBarBgColor,
           icon: Image.asset(
             'assets/images/character.png',
-            color: currentIndex == 0
+            color: widget.currentInxdex == 0
                 ? AppColors.selectedItemColor
                 : AppColors.unselectedItemColor,
           ),
@@ -44,7 +45,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
         BottomNavigationBarItem(
           icon: Image.asset(
             'assets/images/location.png',
-            color: currentIndex == 1
+            color: widget.currentInxdex == 1
                 ? AppColors.selectedItemColor
                 : AppColors.unselectedItemColor,
           ),

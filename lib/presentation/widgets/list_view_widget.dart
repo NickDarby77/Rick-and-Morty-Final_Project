@@ -7,14 +7,17 @@ class ListViewWidget extends StatelessWidget {
   const ListViewWidget({
     super.key,
     required this.dataResults,
+    required this.scrollController,
   });
 
   final List<CharacterResults> dataResults;
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
+        controller: scrollController,
         padding: const EdgeInsets.symmetric(
           horizontal: 16,
         ),
@@ -26,7 +29,7 @@ class ListViewWidget extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const CharacterDetailsPage(),
+                  builder: (context) =>  CharacterDetailsPage(data:  dataResults[index],),
                 ),
               );
             },

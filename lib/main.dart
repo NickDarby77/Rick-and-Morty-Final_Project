@@ -65,3 +65,60 @@ class TextFieldUnfocus extends StatelessWidget {
         child: child,
       );
 }
+
+/*
+Questions to ask Abai
+1. BottomNavBar Locations, Episodes, Settings
+2. CharacterDetails get Api request
+3. scroll pages all
+*/
+
+/*import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Добавляем обработчик событий при достижении конца списка
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+        // Вызовите вашу функцию, когда достигнут конец списка
+        // Например, вы можете вызвать здесь вашу функцию
+        // myFunction();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Пример скролла с вызовом функции при достижении конца'),
+        ),
+        body: ListView.builder(
+          controller: _scrollController, // Присваиваем контроллер скролла ListView
+          itemCount: 100,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text('Элемент $index'),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}*/
