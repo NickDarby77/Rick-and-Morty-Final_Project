@@ -17,19 +17,15 @@ class _NavigationScreenState extends State<NavigationScreen> {
     CharactersListPage(),
     CharactersListPage(),
     /*locations, episodes, settings */
-     
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[currentIndex],
-
       bottomNavigationBar: BottomNavBarWidget(
-        onTap: (val){
-currentIndex = val;
-setState(() {
-  
-});
+        onTap: (val) {
+          currentIndex = val;
+          setState(() {});
         },
         currentInxdex: currentIndex,
       ),
