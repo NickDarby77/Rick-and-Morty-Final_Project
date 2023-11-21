@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rick_and_morty_project/bloc/characters_bloc.dart';
 import 'package:rick_and_morty_project/core/services/dio/dio_settings.dart';
 import 'package:rick_and_morty_project/data/repositories/character_repository.dart';
+import 'package:rick_and_morty_project/data/repositories/location_repository.dart';
+import 'package:rick_and_morty_project/presentation/blocs/characters_bloc/characters_bloc.dart';
+import 'package:rick_and_morty_project/presentation/blocs/location_bloc/locations_bloc.dart';
 import 'package:rick_and_morty_project/presentation/screens/splash_screens/splash.dart';
 import 'package:rick_and_morty_project/presentation/theme/app_colors.dart';
 
@@ -26,11 +28,25 @@ class MyApp extends StatelessWidget {
               dio: RepositoryProvider.of<DioSettings>(context).dio,
             ),
           ),
+          RepositoryProvider(
+            create: (context) => LocationRepository(
+              dio: RepositoryProvider.of<DioSettings>(context).dio,
+            ),
+          )
         ],
-        child: BlocProvider(
-          create: (context) => CharactersBloc(
-            repository: RepositoryProvider.of<CharacterRepository>(context),
-          ),
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => CharactersBloc(
+                repository: RepositoryProvider.of<CharacterRepository>(context),
+              ),
+            ),
+            BlocProvider(
+              create: (context) => LocationsBloc(
+                repository: RepositoryProvider.of<LocationRepository>(context),
+              ),
+            ),
+          ],
           child: MaterialApp(
             theme: ThemeData(
               scaffoldBackgroundColor: AppColors.scaffoldBgColor,
@@ -65,60 +81,3 @@ class TextFieldUnfocus extends StatelessWidget {
         child: child,
       );
 }
-
-/*
-Questions to ask Abai
-1. BottomNavBar Locations, Episodes, Settings
-2. CharacterDetails get Api request
-3. scroll pages all
-*/
-
-/*import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  final ScrollController _scrollController = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-
-    // Добавляем обработчик событий при достижении конца списка
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
-        // Вызовите вашу функцию, когда достигнут конец списка
-        // Например, вы можете вызвать здесь вашу функцию
-        // myFunction();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Пример скролла с вызовом функции при достижении конца'),
-        ),
-        body: ListView.builder(
-          controller: _scrollController, // Присваиваем контроллер скролла ListView
-          itemCount: 100,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text('Элемент $index'),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}*/

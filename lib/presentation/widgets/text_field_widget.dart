@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rick_and_morty_project/bloc/characters_bloc.dart';
 import 'package:rick_and_morty_project/presentation/theme/app_colors.dart';
 import 'package:rick_and_morty_project/presentation/theme/app_fonts.dart';
 
@@ -8,18 +6,22 @@ class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget({
     super.key,
     required this.controller,
+    required this.hintText,
+    required this.onSearch,
+    required this.onChanged,
+    required this.onFilter,
   });
 
   final TextEditingController controller;
+  final String hintText;
+  final Function() onSearch;
+  final Function(String) onChanged;
+  final Function() onFilter;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onChanged: (value) {
-        BlocProvider.of<CharactersBloc>(context).add(
-          GetCharactersDataEvent(name: value),
-        );
-      },
+      onChanged: onChanged,
       style: AppFonts.s16w500White,
       controller: controller,
       decoration: InputDecoration(
@@ -30,23 +32,17 @@ class TextFieldWidget extends StatelessWidget {
             left: 25,
             right: 15,
           ),
-          onPressed: () {
-            BlocProvider.of<CharactersBloc>(context).add(
-              GetCharactersDataEvent(
-                name: controller.text,
-              ),
-            );
-          },
+          onPressed: onSearch,
           icon: const Icon(
             Icons.search,
             color: AppColors.unselectedItemColor,
           ),
         ),
-        hintText: 'Найти персонажа',
+        hintText: hintText,
         hintStyle: AppFonts.hintStyle,
         suffixIcon: IconButton(
           padding: const EdgeInsets.only(right: 15),
-          onPressed: () {},
+          onPressed: onFilter,
           icon: const Icon(
             Icons.filter_alt_outlined,
             color: AppColors.unselectedItemColor,

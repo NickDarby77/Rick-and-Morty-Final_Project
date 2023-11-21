@@ -16,8 +16,6 @@ class BottomNavBarWidget extends StatefulWidget {
 }
 
 class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
-  
-
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(

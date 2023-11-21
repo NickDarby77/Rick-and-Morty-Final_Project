@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_project/presentation/screens/characters/characters_list.dart';
+import 'package:rick_and_morty_project/presentation/screens/location/location_page.dart';
 import 'package:rick_and_morty_project/presentation/widgets/bottom_nav_bar.dart';
 
 class NavigationScreen extends StatefulWidget {
@@ -12,8 +13,8 @@ class NavigationScreen extends StatefulWidget {
 class _NavigationScreenState extends State<NavigationScreen> {
   int currentIndex = 0;
   List<Widget> screens = [
-    CharactersListPage(),
-    CharactersListPage(),
+    const CharactersListPage(),
+    const LocationPage(),
     CharactersListPage(),
     CharactersListPage(),
     /*locations, episodes, settings */
@@ -23,8 +24,8 @@ class _NavigationScreenState extends State<NavigationScreen> {
     return Scaffold(
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavBarWidget(
-        onTap: (val) {
-          currentIndex = val;
+        onTap: (value) {
+          currentIndex = value;
           setState(() {});
         },
         currentInxdex: currentIndex,

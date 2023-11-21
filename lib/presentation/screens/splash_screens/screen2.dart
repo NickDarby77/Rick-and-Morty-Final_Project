@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_project/presentation/screens/navigation_screen.dart';
+import 'package:rick_and_morty_project/presentation/screens/characters/navigation_screen.dart';
 
 class ScreenTwo extends StatefulWidget {
   const ScreenTwo({super.key});

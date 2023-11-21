@@ -22,7 +22,9 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
           gender: event.gender,
           page: event.page,
         );
-        emit(CharactersSuccess(model: result));
+        emit(
+          CharactersSuccess(model: result),
+        );
       } catch (e) {
         print(e.toString());
         if (e is DioException) {

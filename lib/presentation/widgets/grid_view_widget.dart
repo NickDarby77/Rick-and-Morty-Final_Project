@@ -7,14 +7,17 @@ class GridViewWidget extends StatelessWidget {
   const GridViewWidget({
     super.key,
     required this.dataResults,
+    required this.scrollController,
   });
 
   final List<CharacterResults> dataResults;
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: GridView.builder(
+        controller: scrollController,
         padding: const EdgeInsets.symmetric(
           horizontal: 16,
         ),
@@ -33,7 +36,9 @@ class GridViewWidget extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>  CharacterDetailsPage(data:  dataResults[index],),
+                    builder: (context) => CharacterDetailsPage(
+                      data: dataResults[index],
+                    ),
                   ),
                 );
               },

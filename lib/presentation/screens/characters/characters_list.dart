@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rick_and_morty_project/bloc/characters_bloc.dart';
+import 'package:rick_and_morty_project/presentation/blocs/characters_bloc/characters_bloc.dart';
 import 'package:rick_and_morty_project/presentation/theme/app_fonts.dart';
 import 'package:rick_and_morty_project/presentation/widgets/grid_view_widget.dart';
 import 'package:rick_and_morty_project/presentation/widgets/list_view_widget.dart';
@@ -37,7 +37,6 @@ class _CharactersListState extends State<CharactersListPage> {
             GetCharactersDataEvent(page: currentPage.toString()),
           );
         }
-       
       } else if (_scrollController.position.pixels ==
           _scrollController.position.minScrollExtent) {
         if (currentPage > 0) {
@@ -60,14 +59,31 @@ class _CharactersListState extends State<CharactersListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: TextFieldWidget(controller: controller),
+        title: TextFieldWidget(
+          controller: controller,
+          hintText: 'Найти персонажа',
+          onSearch: () {
+            BlocProvider.of<CharactersBloc>(context).add(
+              GetCharactersDataEvent(
+                name: controller.text,
+              ),
+            );
+          },
+          onChanged: (value) {
+            BlocProvider.of<CharactersBloc>(context).add(
+              GetCharactersDataEvent(name: value),
+            );
+          },
+          onFilter: () {},
+        ),
         automaticallyImplyLeading: false,
       ),
       body: BlocBuilder<CharactersBloc, CharactersState>(
         builder: (context, state) {
-          print(state);
           if (state is CharactersLoading) {
-            return const Center(child: CircularProgressIndicator.adaptive(),);
+            return const Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
           }
           if (state is CharactersSuccess) {
             return Column(
@@ -88,6 +104,7 @@ class _CharactersListState extends State<CharactersListPage> {
                       )
                     : GridViewWidget(
                         dataResults: state.model.results ?? [],
+                        scrollController: _scrollController,
                       ),
               ],
             );

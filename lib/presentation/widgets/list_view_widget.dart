@@ -29,7 +29,9 @@ class ListViewWidget extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>  CharacterDetailsPage(data:  dataResults[index],),
+                  builder: (context) => CharacterDetailsPage(
+                    data: dataResults[index],
+                  ),
                 ),
               );
             },

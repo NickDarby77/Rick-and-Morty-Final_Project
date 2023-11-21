@@ -49,4 +49,11 @@ abstract class AppFonts {
     fontWeight: FontWeight.w400,
     letterSpacing: 0.45,
   );
+
+  static const TextStyle locationNameStyle = TextStyle(
+    fontSize: 20,
+    color: Color(0xffFFFFFF),
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.15,
+  );
 }

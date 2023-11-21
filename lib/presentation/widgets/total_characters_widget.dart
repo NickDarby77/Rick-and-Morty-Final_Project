@@ -14,7 +14,6 @@ class CharactersNumberTextWidget extends StatelessWidget {
   final Function() onPressed;
   final String count;
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
