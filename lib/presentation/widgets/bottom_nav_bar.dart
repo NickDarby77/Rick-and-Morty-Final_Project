@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_and_morty_project/presentation/theme/app_colors.dart';
 import 'package:rick_and_morty_project/presentation/theme/app_fonts.dart';
 
@@ -22,7 +23,6 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       onTap: widget.onTap,
       currentIndex: widget.currentInxdex,
       type: BottomNavigationBarType.fixed,
-      backgroundColor: AppColors.navBarBgColor,
       selectedItemColor: AppColors.selectedItemColor,
       unselectedItemColor: AppColors.unselectedItemColor,
       showSelectedLabels: true,
@@ -31,12 +31,17 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       unselectedLabelStyle: AppFonts.unselectedLabelStyle,
       items: [
         BottomNavigationBarItem(
-          backgroundColor: AppColors.navBarBgColor,
-          icon: Image.asset(
-            'assets/images/character.png',
-            color: widget.currentInxdex == 0
-                ? AppColors.selectedItemColor
-                : AppColors.unselectedItemColor,
+          icon: SvgPicture.asset(
+            'assets/svgs/character.svg',
+            colorFilter: widget.currentInxdex == 0
+                ? const ColorFilter.mode(
+                    AppColors.selectedItemColor,
+                    BlendMode.srcIn,
+                  )
+                : const ColorFilter.mode(
+                    AppColors.unselectedItemColor,
+                    BlendMode.srcIn,
+                  ),
           ),
           label: 'Персонажи',
         ),

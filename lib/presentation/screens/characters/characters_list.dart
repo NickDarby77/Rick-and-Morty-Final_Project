@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty_project/presentation/blocs/characters_bloc/characters_bloc.dart';
 import 'package:rick_and_morty_project/presentation/theme/app_fonts.dart';
+import 'package:rick_and_morty_project/presentation/theme/theme_provider.dart';
 import 'package:rick_and_morty_project/presentation/widgets/grid_view_widget.dart';
 import 'package:rick_and_morty_project/presentation/widgets/list_view_widget.dart';
 import 'package:rick_and_morty_project/presentation/widgets/text_field_widget.dart';
@@ -77,6 +78,14 @@ class _CharactersListState extends State<CharactersListPage> {
           onFilter: () {},
         ),
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.read<ThemeProvider>().changeTheme();
+            },
+            icon: const Icon(Icons.sunny),
+          ),
+        ],
       ),
       body: BlocBuilder<CharactersBloc, CharactersState>(
         builder: (context, state) {

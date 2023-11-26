@@ -17,15 +17,13 @@ class _ScreenOneState extends State<ScreenOne> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SizedBox(
-          height: double.infinity,
-          width: double.infinity,
-          child: Image.asset(
-            'assets/images/screen1.png',
-            fit: BoxFit.fill,
-          ),
+    return Scaffold(
+      body: SizedBox(
+        height: double.infinity,
+        width: double.infinity,
+        child: Image.asset(
+          'assets/images/screen1.png',
+          fit: BoxFit.fill,
         ),
       ),
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty_project/presentation/theme/app_colors.dart';
 import 'package:rick_and_morty_project/presentation/theme/app_fonts.dart';
+import 'package:rick_and_morty_project/presentation/theme/theme_provider.dart';
 
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget({
@@ -20,13 +22,17 @@ class TextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final vm = context.watch<ThemeProvider>();
+
     return TextField(
       onChanged: onChanged,
       style: AppFonts.s16w500White,
       controller: controller,
       decoration: InputDecoration(
         filled: true,
-        fillColor: AppColors.navBarBgColor,
+        fillColor: vm.isDarkTheme
+            ? AppColors.navBarBgColor
+            : AppColors.lightTextFieldColor,
         prefixIcon: IconButton(
           padding: const EdgeInsets.only(
             left: 25,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:rick_and_morty_project/core/services/dio/dio_settings.dart';
 import 'package:rick_and_morty_project/data/repositories/character_repository.dart';
 import 'package:rick_and_morty_project/data/repositories/location_repository.dart';
@@ -7,6 +8,7 @@ import 'package:rick_and_morty_project/presentation/blocs/characters_bloc/charac
 import 'package:rick_and_morty_project/presentation/blocs/location_bloc/locations_bloc.dart';
 import 'package:rick_and_morty_project/presentation/screens/splash_screens/splash.dart';
 import 'package:rick_and_morty_project/presentation/theme/app_colors.dart';
+import 'package:rick_and_morty_project/presentation/theme/theme_provider.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -46,17 +48,18 @@ class MyApp extends StatelessWidget {
                 repository: RepositoryProvider.of<LocationRepository>(context),
               ),
             ),
+            ChangeNotifierProvider(
+              create: (context) => ThemeProvider(),
+            )
           ],
-          child: MaterialApp(
-            theme: ThemeData(
-              scaffoldBackgroundColor: AppColors.scaffoldBgColor,
-              appBarTheme: const AppBarTheme(
-                backgroundColor: AppColors.scaffoldBgColor,
-                elevation: 0,
-              ),
-            ),
-            debugShowCheckedModeBanner: false,
-            home: const Splash(),
+          child: Builder(
+            builder: (context) {
+              return MaterialApp(
+                theme: context.watch<ThemeProvider>().theme,
+                debugShowCheckedModeBanner: false,
+                home: const Splash(),
+              );
+            },
           ),
         ),
       ),
