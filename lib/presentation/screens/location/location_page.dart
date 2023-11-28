@@ -6,7 +6,7 @@ import 'package:rick_and_morty_project/presentation/blocs/location_bloc/location
 import 'package:rick_and_morty_project/presentation/screens/location/location_details.dart';
 import 'package:rick_and_morty_project/presentation/theme/app_fonts.dart';
 import 'package:rick_and_morty_project/presentation/theme/theme_provider.dart';
-import 'package:rick_and_morty_project/presentation/widgets/text_field_widget.dart';
+import 'package:rick_and_morty_project/presentation/common_widgets/text_field_widget.dart';
 
 class LocationPage extends StatefulWidget {
   const LocationPage({super.key});
@@ -141,6 +141,7 @@ class _CharactersListState extends State<LocationPage> {
                               children: [
                                 Image.asset(
                                   'assets/images/locations.png',
+                                  width: double.maxFinite,
                                 ),
                                 const SizedBox(height: 15),
                                 Padding(

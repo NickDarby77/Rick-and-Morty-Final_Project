@@ -13,12 +13,13 @@ class LocationDetailsPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.scaffoldBgColor,
-        body: Column(
+        body: ListView(
           children: [
             Stack(
               children: [
                 Image.asset(
                   'assets/images/locations.png',
+                  width: double.maxFinite,
                 ),
                 IconButton(
                   onPressed: () {

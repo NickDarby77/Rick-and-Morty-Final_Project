@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty_project/presentation/blocs/characters_bloc/characters_bloc.dart';
 import 'package:rick_and_morty_project/presentation/theme/app_fonts.dart';
 import 'package:rick_and_morty_project/presentation/theme/theme_provider.dart';
-import 'package:rick_and_morty_project/presentation/widgets/grid_view_widget.dart';
-import 'package:rick_and_morty_project/presentation/widgets/list_view_widget.dart';
-import 'package:rick_and_morty_project/presentation/widgets/text_field_widget.dart';
-import 'package:rick_and_morty_project/presentation/widgets/total_characters_widget.dart';
+import 'package:rick_and_morty_project/presentation/common_widgets/grid_view_widget.dart';
+import 'package:rick_and_morty_project/presentation/common_widgets/list_view_widget.dart';
+import 'package:rick_and_morty_project/presentation/common_widgets/text_field_widget.dart';
+import 'package:rick_and_morty_project/presentation/common_widgets/total_characters_widget.dart';
 
 class CharactersListPage extends StatefulWidget {
   const CharactersListPage({super.key});

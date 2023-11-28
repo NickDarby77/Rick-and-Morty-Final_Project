@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_project/presentation/screens/characters/characters_list.dart';
+import 'package:rick_and_morty_project/presentation/screens/characters_screen/chars/characters_list.dart';
 import 'package:rick_and_morty_project/presentation/screens/location/location_page.dart';
-import 'package:rick_and_morty_project/presentation/widgets/bottom_nav_bar.dart';
+import 'package:rick_and_morty_project/presentation/common_widgets/bottom_nav_bar.dart';
 
 class NavigationScreen extends StatefulWidget {
   const NavigationScreen({super.key});

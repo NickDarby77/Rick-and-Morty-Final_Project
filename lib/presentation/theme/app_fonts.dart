@@ -33,7 +33,6 @@ abstract class AppFonts {
     fontSize: 12,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.5,
-    // color: Color(0xff6E798C),
     color: Colors.white,
   );
 
@@ -41,6 +40,13 @@ abstract class AppFonts {
     fontSize: 13,
     fontWeight: FontWeight.w400,
     color: Colors.white,
+    letterSpacing: 0.25,
+  );
+
+  static const TextStyle s14w400 = TextStyle(
+    color: Colors.white,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
     letterSpacing: 0.25,
   );
 
@@ -69,5 +75,12 @@ abstract class AppFonts {
     fontSize: 24,
     fontWeight: FontWeight.w700,
     color: Colors.white,
+  );
+
+  static const TextStyle s34w400 = TextStyle(
+    color: Colors.white,
+    fontSize: 34,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.25,
   );
 }
