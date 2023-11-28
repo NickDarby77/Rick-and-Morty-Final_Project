@@ -7,7 +7,6 @@ import 'package:rick_and_morty_project/data/repositories/location_repository.dar
 import 'package:rick_and_morty_project/presentation/blocs/characters_bloc/characters_bloc.dart';
 import 'package:rick_and_morty_project/presentation/blocs/location_bloc/locations_bloc.dart';
 import 'package:rick_and_morty_project/presentation/screens/splash_screens/splash.dart';
-import 'package:rick_and_morty_project/presentation/theme/app_colors.dart';
 import 'package:rick_and_morty_project/presentation/theme/theme_provider.dart';
 
 void main(List<String> args) {

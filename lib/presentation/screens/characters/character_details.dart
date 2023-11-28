@@ -62,6 +62,136 @@ class CharacterDetailsPage extends StatelessWidget {
                             color: Color(0xffFFFFFF),
                           ),
                         ),
+                        const SizedBox(height: 30),
+                        Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Gender',
+                                  style: TextStyle(
+                                    color: Color(0xFF5B6975),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    letterSpacing: 0.50,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  data.gender ?? '',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    letterSpacing: 0.25,
+                                  ),
+                                )
+                              ],
+                            ),
+                            const SizedBox(width: 120),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Race',
+                                  style: TextStyle(
+                                    color: Color(0xFF5B6975),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    letterSpacing: 0.50,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  data.species ?? '',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    letterSpacing: 0.25,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Place of Birth',
+                                  style: TextStyle(
+                                    color: Color(0xFF5B6975),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    letterSpacing: 0.50,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  data.origin?.name ?? '',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    letterSpacing: 0.25,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Spacer(),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.arrow_forward_ios,
+                                color: Colors.white,
+                                size: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Location',
+                                  style: TextStyle(
+                                    color: Color(0xFF5B6975),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    letterSpacing: 0.50,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  data.location?.name ?? '',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    letterSpacing: 0.25,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Spacer(),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.arrow_forward_ios,
+                                color: Colors.white,
+                                size: 14,
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
@@ -70,7 +200,7 @@ class CharacterDetailsPage extends StatelessWidget {
             ),
             Container(
               height: 220,
-              color: const Color(0xff0B1E2D).withOpacity(0.7),
+              color: const Color(0xff0B1E2D).withOpacity(0.65),
             ),
             IconButton(
               onPressed: () {
