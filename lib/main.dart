@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_and_morty_project/core/services/dio/dio_settings.dart';
 import 'package:rick_and_morty_project/data/repositories/character_repository.dart';
+import 'package:rick_and_morty_project/data/repositories/get_episode_repository.dart';
 import 'package:rick_and_morty_project/data/repositories/location_repository.dart';
 import 'package:rick_and_morty_project/presentation/blocs/characters_bloc/characters_bloc.dart';
+import 'package:rick_and_morty_project/presentation/blocs/episode_bloc/bloc/episode_bloc.dart';
 import 'package:rick_and_morty_project/presentation/blocs/location_bloc/locations_bloc.dart';
 import 'package:rick_and_morty_project/presentation/screens/splash_screens/splash.dart';
 import 'package:rick_and_morty_project/presentation/theme/theme_provider.dart';
@@ -33,7 +35,12 @@ class MyApp extends StatelessWidget {
             create: (context) => LocationRepository(
               dio: RepositoryProvider.of<DioSettings>(context).dio,
             ),
-          )
+          ),
+          RepositoryProvider(
+            create: (context) => GetEpisodeRepository(
+              dio: RepositoryProvider.of<DioSettings>(context).dio,
+            ),
+          ),
         ],
         child: MultiBlocProvider(
           providers: [
@@ -47,9 +54,15 @@ class MyApp extends StatelessWidget {
                 repository: RepositoryProvider.of<LocationRepository>(context),
               ),
             ),
+            BlocProvider(
+              create: (context) => EpisodeBloc(
+                repository:
+                    RepositoryProvider.of<GetEpisodeRepository>(context),
+              ),
+            ),
             ChangeNotifierProvider(
               create: (context) => ThemeProvider(),
-            )
+            ),
           ],
           child: Builder(
             builder: (context) {

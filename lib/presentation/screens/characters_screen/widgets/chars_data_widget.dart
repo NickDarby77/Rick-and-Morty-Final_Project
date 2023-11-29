@@ -56,7 +56,7 @@ class CharsDataWidget extends StatelessWidget {
                 const SizedBox(width: 120),
                 GenderRaceWidget(
                   data: data,
-                  title: 'Race',
+                  title: 'Species',
                   subTitle: data.species ?? '',
                 ),
               ],

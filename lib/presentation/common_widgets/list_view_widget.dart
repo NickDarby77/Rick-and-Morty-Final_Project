@@ -30,7 +30,7 @@ class ListViewWidget extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => CharacterDetailsPage(
-                    data: dataResults[index],
+                    charsData: dataResults[index],
                   ),
                 ),
               );
