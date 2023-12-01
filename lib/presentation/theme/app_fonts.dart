@@ -8,6 +8,13 @@ abstract class AppFonts {
     letterSpacing: 1.5,
   );
 
+  static const TextStyle episodeId = TextStyle(
+    color: Color(0xDD22A2BD),
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 1.50,
+  );
+
   static const TextStyle charactersNumber = TextStyle(
     fontSize: 10,
     fontWeight: FontWeight.w500,
@@ -45,6 +52,13 @@ abstract class AppFonts {
 
   static const TextStyle s14w400 = TextStyle(
     color: Colors.white,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.25,
+  );
+
+  static const TextStyle airDate = TextStyle(
+    color: Color(0x996E798C),
     fontSize: 14,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.25,

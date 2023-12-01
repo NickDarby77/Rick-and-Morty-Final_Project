@@ -4,6 +4,7 @@ import 'package:rick_and_morty_project/data/models/characters_model.dart';
 import 'package:rick_and_morty_project/data/models/episode_model.dart';
 import 'package:rick_and_morty_project/presentation/blocs/episode_bloc/bloc/episode_bloc.dart';
 import 'package:rick_and_morty_project/presentation/theme/app_colors.dart';
+import 'package:rick_and_morty_project/presentation/theme/app_fonts.dart';
 
 class EpisodesWidget extends StatefulWidget {
   const EpisodesWidget({
@@ -28,6 +29,7 @@ class _EpisodesWidgetState extends State<EpisodesWidget> {
         ),
       );
     }
+    setState(() {});
   }
 
   @override
@@ -44,8 +46,8 @@ class _EpisodesWidgetState extends State<EpisodesWidget> {
         listener: (context, state) {
           if (state is EpisodeSuccess) {
             episodeData.add(state.model);
+            setState(() {});
           }
-          setState(() {});
         },
         child: ListView.builder(
           padding: const EdgeInsets.symmetric(
@@ -63,9 +65,9 @@ class _EpisodesWidgetState extends State<EpisodesWidget> {
                   width: 74,
                   height: 74,
                   decoration: ShapeDecoration(
-                    image: const DecorationImage(
+                    image: DecorationImage(
                       image: NetworkImage(
-                        "https://via.placeholder.com/74x74",
+                        widget.data.image ?? '',
                       ),
                       fit: BoxFit.fill,
                     ),
@@ -84,22 +86,16 @@ class _EpisodesWidgetState extends State<EpisodesWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
+                              'СЕРИЯ ${episodeData[index].id}',
+                              style: AppFonts.episodeId,
+                            ),
+                            Text(
                               episodeData[index].name ?? '',
-                              style: const TextStyle(
-                                color: Colors.white,
-                              ),
+                              style: AppFonts.s16w500White,
                             ),
-                            const Text(
-                              '',
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                            const Text(
-                              '',
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
+                            Text(
+                              episodeData[index].airDate ?? "",
+                              style: AppFonts.airDate,
                             ),
                           ],
                         ),
