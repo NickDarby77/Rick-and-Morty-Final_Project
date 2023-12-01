@@ -56,6 +56,8 @@ class _CharactersListState extends State<CharactersListPage> {
     super.dispose();
   }
 
+  bool isChecked = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,10 +74,53 @@ class _CharactersListState extends State<CharactersListPage> {
           },
           onChanged: (value) {
             BlocProvider.of<CharactersBloc>(context).add(
-              GetCharactersDataEvent(name: value),
+              GetCharactersDataEvent(
+                name: value,
+              ),
             );
           },
-          onFilter: () {},
+          onFilter: () {
+            showDialog(
+              context: context,
+              builder: (contex) => AlertDialog(
+                content: Column(
+                  children: [
+                    const Text(
+                      'СТАТУС',
+                      style: TextStyle(
+                        color: Color(0xFF5B6975),
+                        fontSize: 10,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 1.50,
+                      ),
+                    ),
+                    Checkbox(
+                      value: isChecked,
+                      onChanged: (val) {
+                        setState(
+                          () {
+                            isChecked = val!;
+                          },
+                        );
+                      },
+                      checkColor: Colors.amber,
+                    ),
+                    Checkbox(
+                      value: isChecked,
+                      onChanged: (val) {
+                        setState(
+                          () {
+                            isChecked = val!;
+                          },
+                        );
+                      },
+                      checkColor: Colors.amber,
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
         ),
         automaticallyImplyLeading: false,
         actions: [
