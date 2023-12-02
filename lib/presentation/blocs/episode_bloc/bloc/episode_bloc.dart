@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
+import 'package:rick_and_morty_project/data/models/all_episode_model.dart';
 import 'package:rick_and_morty_project/data/models/episode_model.dart';
 import 'package:rick_and_morty_project/data/repositories/get_episode_repository.dart';
 
@@ -31,6 +32,32 @@ class EpisodeBloc extends Bloc<EpisodeEvent, EpisodeState> {
         } else {
           emit(
             EpisodeError(
+              errorText: e.toString(),
+            ),
+          );
+        }
+      }
+    });
+    on<GetAllEpisodesEvent>((event, emit) async {
+      emit(AllEpisodeLoading());
+
+      try {
+        final result = await repository.getAllEpisodes(
+          episodeName: event.episode,
+        );
+        emit(
+          AllEpisodeSuccess(allEpisode: result),
+        );
+      } catch (e) {
+        if (e is DioException) {
+          emit(
+            AllEpisodeError(
+              errorText: e.response?.data.toString() ?? '',
+            ),
+          );
+        } else {
+          emit(
+            AllEpisodeError(
               errorText: e.toString(),
             ),
           );

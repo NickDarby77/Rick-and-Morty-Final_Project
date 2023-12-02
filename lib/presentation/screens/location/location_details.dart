@@ -44,7 +44,7 @@ class LocationDetailsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      locData.name ?? 'null',
+                      locData.name ?? 'no',
                       style: AppFonts.s24w700,
                     ),
                     const SizedBox(height: 4),

@@ -16,3 +16,15 @@ final class EpisodeError extends EpisodeState {
   final String errorText;
   EpisodeError({required this.errorText});
 }
+
+final class AllEpisodeLoading extends EpisodeState {}
+
+final class AllEpisodeSuccess extends EpisodeState {
+  final AllEpisodeModel allEpisode;
+  AllEpisodeSuccess({required this.allEpisode});
+}
+
+final class AllEpisodeError extends EpisodeState {
+  final String errorText;
+  AllEpisodeError({required this.errorText});
+}

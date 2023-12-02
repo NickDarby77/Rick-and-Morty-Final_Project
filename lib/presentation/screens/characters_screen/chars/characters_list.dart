@@ -138,8 +138,7 @@ class _CharactersListState extends State<CharactersListPage> {
             return const Center(
               child: CircularProgressIndicator.adaptive(),
             );
-          }
-          if (state is CharactersSuccess) {
+          } else if (state is CharactersSuccess) {
             return Column(
               children: [
                 CharactersNumberTextWidget(

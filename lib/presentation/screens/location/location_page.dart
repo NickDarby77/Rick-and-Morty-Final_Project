@@ -12,10 +12,10 @@ class LocationPage extends StatefulWidget {
   const LocationPage({super.key});
 
   @override
-  State<LocationPage> createState() => _CharactersListState();
+  State<LocationPage> createState() => _LocationPageState();
 }
 
-class _CharactersListState extends State<LocationPage> {
+class _LocationPageState extends State<LocationPage> {
   TextEditingController controller = TextEditingController();
 
   final ScrollController _scrollController = ScrollController();
@@ -31,7 +31,7 @@ class _CharactersListState extends State<LocationPage> {
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
-        if (currentPage <= 126) {
+        if (currentPage <= 7) {
           currentPage++;
           BlocProvider.of<LocationsBloc>(context).add(
             GetLocationsDataEvent(
