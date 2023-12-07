@@ -123,7 +123,7 @@ class _EpisodeScreenState extends State<EpisodeScreen> {
               children: [
                 Text(
                   state.allEpisode.results?.first.episode ?? '',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 26,
                     color: Colors.amber,
                   ),
